@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl,Validators } from '@angular/forms';
 
 import { Member } from 'src/model/Member';
+import { MemberServiceService } from '../member-service.service';
 @Component({
   selector: 'app-member-form',
   templateUrl: './member-form.component.html',
@@ -9,6 +10,9 @@ import { Member } from 'src/model/Member';
 })
 export class MemberFormComponent implements OnInit {// 
 
+  constructor (private memberService:MemberServiceService){
+
+  }
   form:any;
   ngOnInit(): void {
     this.initForm()
@@ -24,7 +28,9 @@ export class MemberFormComponent implements OnInit {//
   }
   onsub():void{
     //recupruration et affichage des formulaire.
-    console.log(this.form.value)
+    console.log(this.form.value);
+    const ObjectToSubmit = this.form.value;
+    this.memberService = ObjectToSubmit;
   }
 
 }
