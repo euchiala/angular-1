@@ -13,6 +13,10 @@ const routes: Routes = [
     path:'createMember',
     pathMatch:'full',
     component:MemberFormComponent,
+  },{
+    path:'members/:id/edit',
+    pathMatch:'full',
+    component:MemberFormComponent,
   }
 ];
 
