@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl,Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 import { Member } from 'src/model/Member';
 import { MemberServiceService } from '../member-service.service';
@@ -10,7 +11,7 @@ import { MemberServiceService } from '../member-service.service';
 })
 export class MemberFormComponent implements OnInit {// 
 
-  constructor (private memberService:MemberServiceService){
+  constructor (private memberService:MemberServiceService, private router:Router){
 
   }
   form:any;
@@ -30,7 +31,8 @@ export class MemberFormComponent implements OnInit {//
     //recupruration et affichage des formulaire.
     console.log(this.form.value);
     const ObjectToSubmit = this.form.value;
-    this.memberService = ObjectToSubmit;
+    
+    this.memberService.saveMember(ObjectToSubmit).then(()=>{this.router.navigate(["/members"])});
   }
 
 }
