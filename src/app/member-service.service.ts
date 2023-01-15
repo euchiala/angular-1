@@ -16,7 +16,7 @@ export class MemberServiceService {
   saveMember(member:any):Promise<Member>
   {
     const memberToSave = {...member,
-      id:Math.ceil((Math.random()*10000)).toString(),
+      id: member.id ?? Math.ceil((Math.random()*10000)).toString(),
       createat : new Date().toISOString()
     }
     console.log(memberToSave);
@@ -25,6 +25,7 @@ export class MemberServiceService {
     return new Promise(resolve => resolve(memberToSave))
     //return this.httpClient.post<Member>("link", member).toPromise();
   }
+  
   //Promise pour que elle va etre une request http vers le front pour la syncronisation total entre le front et le back
   getMemberByID(id:String):Promise<Member>{
     //Methode 1
