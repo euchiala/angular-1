@@ -39,16 +39,27 @@ export class MemberServiceService {
     //this.httpClient.get<Member>("link(lien de front)",id).toPromise();
   }
 
-  deleteMemberByID(id:String):Promise<Member[]>{
+  deleteMemberByID_byMe(id:String):Promise<Member[]>{
     //Methode 1
-    //let elementTofind :Member;
-    //elementTofind = this.tab.filter(item  => item.id === id)[0]??null;
-    //return new Promise(resolve => resolve(elementTofind))
 
     console.log("2- Delete me")
     this.tab = this.tab.filter(item  => item.id!==id)//{ ...this.tab.filter(item  => item.id!==id)}
     console.log(this.tab )
     return new Promise(resolve => resolve(this.tab))
+  }
+
+  deleteMemberByID(id:String):Promise<void>{
+    //Methode 2
+
+    console.log("2- Delete me")
+    this.tab = this.tab.filter(item  => item.id!==id)//{ ...this.tab.filter(item  => item.id!==id)}
+    console.log(this.tab )
+    return new Promise(resolve => resolve())
+     //return this.httpClient.delete<void>("link")
+  }
+
+  fetchDataSource():Member[]{
+    return this.tab;
   }
 
 }

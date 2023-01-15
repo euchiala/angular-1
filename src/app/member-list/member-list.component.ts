@@ -23,7 +23,9 @@ export class MemberListComponent {
   deleteMember(id:String): void{
     console.log("Delete me 1 ");
     
-    this.memberService.deleteMemberByID(id).then(()=>{this.dataSource=this.memberService.tab})
-    console.log(this.memberService.tab)
+    this.memberService.deleteMemberByID(id).then(()=>{this.fetchDataSource()})
+  }
+  fetchDataSource():void{
+    this.dataSource = this.memberService.fetchDataSource();
   }
 }
