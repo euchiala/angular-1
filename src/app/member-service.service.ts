@@ -58,8 +58,9 @@ export class MemberServiceService {
      //return this.httpClient.delete<void>("link")
   }
 
-  fetchDataSource():Member[]{
-    return this.tab;
+  getAllMembers():Promise<Member[]>{
+    
+    return new Promise(resolve => resolve(this.tab))
   }
 
 }

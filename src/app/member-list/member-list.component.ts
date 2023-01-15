@@ -26,6 +26,6 @@ export class MemberListComponent {
     this.memberService.deleteMemberByID(id).then(()=>{this.fetchDataSource()})
   }
   fetchDataSource():void{
-    this.dataSource = this.memberService.fetchDataSource();
+    this.memberService.getAllMembers().then((result)=>(this.dataSource = result));
   }
 }
