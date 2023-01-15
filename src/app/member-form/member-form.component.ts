@@ -23,14 +23,14 @@ export class MemberFormComponent implements OnInit {//
     this.currentItemID = this.activatedRoute.snapshot.params["id"];
     console.log(this.currentItemID)
     if(!!this.currentItemID){//!! trouly
-      this.memberService.getMemberByID(this.currentItemID).then((item1)=>{this.initForm(item1)});
+      this.memberService.getMemberByID(this.currentItemID).then((item1)=>{this.initFormMember(item1)});
     }else{
-      this.initForm(null);
+      this.initForm();
     }
     
 
   }
-  /*
+  
   initForm():void{
     this.form = new FormGroup({
       cin : new FormControl(null, [Validators.required]),
@@ -38,23 +38,15 @@ export class MemberFormComponent implements OnInit {//
       cv : new FormControl(null, [Validators.required]),
       type : new FormControl(null, [Validators.required])
     })
-  }*/
-  initForm(member:any):void{
-    if(!!member){
+  }
+  initFormMember(member:Member):void{
       this.form = new FormGroup({
         cin : new FormControl(member.cin, [Validators.required]),
         name : new FormControl(member.name, [Validators.required]),
         cv : new FormControl(member.cv, [Validators.required]),
         type : new FormControl(member.type, [Validators.required])
       })
-    }else{
-      this.form = new FormGroup({
-        cin : new FormControl(null, [Validators.required]),
-        name : new FormControl(null, [Validators.required]),
-        cv : new FormControl(null, [Validators.required]),
-        type : new FormControl(null, [Validators.required])
-      })
-    }
+    
 
     
   }
