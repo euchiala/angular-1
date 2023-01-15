@@ -52,11 +52,9 @@ export class MemberFormComponent implements OnInit {//
   
   
   onsub():void{
-    //recupruration et affichage des formulaire.
-    console.log(this.form.value);
-    console.log(this.myMember);
-    const ObjectToSubmit = {...this.myMember, ...this.form.value
-    }
+    //save and update Member : Display Liste Members.
+    const ObjectToSubmit = {...this.myMember, ...this.form.value}
+
     this.memberService.saveMember(ObjectToSubmit).then(()=>{this.router.navigate(["/members"])});
   }
 

@@ -65,7 +65,7 @@
             <button mat-raised-button routerLink="{{element.id}}/edit/">
                 <mat-icon color="warn" aria-hidden="false" aria-label="Mettre à jour icon" fontIcon="update">edit</mat-icon>
             </button>
-            <button mat-raised-button>
+            <button mat-raised-button (click)="deleteMember(element.id)">
                 <mat-icon color="primary" aria-hidden="false" aria-label="Supprimer icon" fontIcon="delete"></mat-icon>
             </button>
             
