@@ -25,5 +25,17 @@ export class MemberServiceService {
     return new Promise(resolve => resolve(memberToSave))
     //return this.httpClient.post<Member>("link", member).toPromise();
   }
+  //Promise pour que elle va etre une request http vers le front pour la syncronisation total entre le front et le back
+  getMemberByID(id:String):Promise<Member>{
+    //Methode 1
+    //let elementTofind :Member;
+    //elementTofind = this.tab.filter(item  => item.id === id)[0]??null;
+    //return new Promise(resolve => resolve(elementTofind))
+
+    this.tab.filter(item  => item.id === id)[0]??null;
+    return new Promise(resolve => resolve(this.tab.filter(item  => item.id === id)[0]??null))
+
+    //this.httpClient.get<Member>("link(lien de front)",id).toPromise();
+  }
 
 }
