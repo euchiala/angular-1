@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { Member } from 'src/model/Member';
 import { GLOBAL } from '../app-config';
+import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.component';
 import { MemberServiceService } from '../member-service.service';
 
 const ELEMENT_DATA: Member[] = GLOBAL._DB.members;
@@ -13,7 +15,7 @@ const ELEMENT_DATA: Member[] = GLOBAL._DB.members;
 })
 
 export class MemberListComponent {
-  constructor(private memberService:MemberServiceService, private router:Router, ){
+  constructor(private memberService:MemberServiceService, private router:Router, private dialog:MatDialog){
 
   }
   displayedColumns: string[] = ['ID', 'Cin', 'Name', 'CV','DateCreation','Type','actionUpdate'];
@@ -21,9 +23,13 @@ export class MemberListComponent {
   dataSource = this.memberService.tab;
   
   deleteMember(id:String): void{
-    console.log("Delete me 1 ");
     
-    this.memberService.deleteMemberByID(id).then(()=>{this.fetchDataSource()})
+    const diaLogRef = this.dialog.open(ConfirmDialogComponent,{});
+    diaLogRef.afterClosed().subscribe((res)=>{
+      if(res)
+        this.memberService.deleteMemberByID(id).then(()=>{this.fetchDataSource()})
+    })
+      
   }
   fetchDataSource():void{
     this.memberService.getAllMembers().then((result)=>(this.dataSource = result));

@@ -61,6 +61,7 @@ export class MemberServiceService {
   getAllMembers():Promise<Member[]>{
     
     return new Promise(resolve => resolve(this.tab))
+    //return this.httpClient.get<Member[]>("link").toPromise();
   }
 
 }
