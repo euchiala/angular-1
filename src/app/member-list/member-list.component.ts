@@ -6,6 +6,8 @@ import { GLOBAL } from '../app-config';
 import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.component';
 import { MemberServiceService } from '../member-service.service';
 
+import {MatTableDataSource} from '@angular/material/table';
+
 const ELEMENT_DATA: Member[] = GLOBAL._DB.members;
 
 @Component({
@@ -20,7 +22,7 @@ export class MemberListComponent {
   }
   displayedColumns: string[] = ['ID', 'Cin', 'Name', 'CV','DateCreation','Type','actionUpdate'];
   //dataSource = ELEMENT_DATA;
-  dataSource = this.memberService.tab;
+  dataSource = new MatTableDataSource(this.memberService.tab);
   
   deleteMember(id:String): void{
     
@@ -32,6 +34,11 @@ export class MemberListComponent {
       
   }
   fetchDataSource():void{
-    this.memberService.getAllMembers().then((result)=>(this.dataSource = result));
+    this.memberService.getAllMembers().then((result)=>(this.dataSource.data = result));
+  }
+  //this.dataSource = new MatTableDataSource(ELEMENT_DATA);
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 }
