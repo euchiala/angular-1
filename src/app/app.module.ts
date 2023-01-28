@@ -23,6 +23,9 @@ import {MatListModule} from '@angular/material/list';
 import {MatMenuModule} from '@angular/material/menu';
 import { LayoutComponent } from './layout/layout.component';
 
+
+import {FlexLayoutModule} from "@angular/flex-layout";
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -46,6 +49,7 @@ import { LayoutComponent } from './layout/layout.component';
     MatToolbarModule,
     MatListModule,
     MatMenuModule,
+    FlexLayoutModule
   ],
   providers: [],
   bootstrap: [AppComponent]
