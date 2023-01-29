@@ -25,6 +25,7 @@ import { LayoutComponent } from './layout/layout.component';
 
 
 import {FlexLayoutModule} from "@angular/flex-layout";
+import { FirebaseModule } from './Firebase.module';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import {FlexLayoutModule} from "@angular/flex-layout";
     MatToolbarModule,
     MatListModule,
     MatMenuModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    FirebaseModule
   ],
   providers: [],
   bootstrap: [AppComponent]
