@@ -15,7 +15,7 @@ import { MemberFormComponent } from './member-form/member-form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
 import{MatDialogModule} from '@angular/material/dialog';
-
+import {MatCardModule} from '@angular/material/card';
 
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatToolbarModule} from '@angular/material/toolbar';
@@ -26,6 +26,7 @@ import { LayoutComponent } from './layout/layout.component';
 
 import {FlexLayoutModule} from "@angular/flex-layout";
 import { FirebaseModule } from './Firebase.module';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { FirebaseModule } from './Firebase.module';
     MemberFormComponent,
     MemberListComponent,
     ConfirmDialogComponent,
-    LayoutComponent
+    LayoutComponent,
+    LoginComponent
   ],
   imports: [
     ReactiveFormsModule,FormsModule,
@@ -49,6 +51,7 @@ import { FirebaseModule } from './Firebase.module';
     MatSidenavModule,
     MatToolbarModule,
     MatListModule,
+    MatCardModule,
     MatMenuModule,
     FlexLayoutModule,
     FirebaseModule
